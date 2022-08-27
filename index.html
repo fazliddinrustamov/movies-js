@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies for all!</title>
+  <link rel="stylesheet" href="./styles/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body class="bg-info">
+  <main>
+    <section>
+      <div class="container mt-5">
+        <h1 class="movie-heading fw-bold text-center m-0">Select your favourite film!</h1>
+
+        <ul class="movie-list-js list-unstyled d-flex flex-wrap justify-content-around mt-5"></ul>
+      </div>
+    </section>
+  </main>
+
+  <template id="template-movies-js">
+    <li class="movie-card-js card mb-3 py-2 card-item col-3">
+      <img class="movie-img-js card-img-top card-img mt-1" src="" alt="" width="250" height="200">
+      <div class="card-body">
+        <h5 class="movie-title-js card-title"></h5>
+        <span class="movie-subtitle-js d-block"></span>
+        <span class="movie-year-js d-block"></span>
+        <span class="movie-category-js d-block"></span>
+        <span class="movie-rating-js d-block"></span>
+        <span class="movie-runtime-js d-block"></span>
+        <span class="movie-language-js d-block"></span>
+        <span><a class="movie-ytlink-js d-block"></a></span>
+      </div>
+    </li>
+  </template>
+
+  <script src="./js/movies.js"></script>
+  <script src="./js/utilities.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+</html>
