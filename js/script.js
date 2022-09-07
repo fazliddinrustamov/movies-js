@@ -1,22 +1,28 @@
 let movieList = $(".movie-list-js");
 let movieRes = $("#template-movies-js").content;
 
-let movieInfo = movies.map(function(info) {
-  return {
-    title: info.Title,
+let searchForm = $(".wrapper-form-js");
+let searchPlace = $(".search-movie-js", searchForm);
+
+let movieInfo = [];
+
+let filterArray = movies.forEach((info) => {
+  movieInfo.push({
+    title: info.Title.toString(),
     fulltitle: info.fulltitle,
     year: info.movie_year,
-    category: info.Categories,
+    category: info.Categories.split("|"),
     summary: info.summary,
     img: `https://i3.ytimg.com/vi/${info.ytid}/maxresdefault.jpg`,
     rating: info.imdb_rating,
     runtime: info.runtime,
     lang: info.language,
     ytLink: `https://www.youtube.com/watch?v=${info.ytid}`,
-  }
-})
+  })
+});
 
 let renderMovies = function (movieInfo) {
+  movieList.innerHTML = '';
   let elMovieWrapper = document.createDocumentFragment();
   
   movieInfo.forEach((movie) => {
@@ -42,4 +48,27 @@ let renderMovies = function (movieInfo) {
   movieList.appendChild(elMovieWrapper);
 }
 
-renderMovies(movieInfo);
+let findMovies = (title) => {
+  return movieInfo.filter(movie => {
+    return movie.title.match(title);
+  })
+}
+
+let movieSearchArr = [];
+
+searchForm.addEventListener('submit', function(evt){
+  evt.preventDefault();
+
+  let searchPlaceConfigured = searchPlace.value.trim();
+  let searchingRegex = new RegExp(searchPlaceConfigured, 'gi');
+
+  let searchResults = findMovies(searchingRegex);
+
+  movieSearchArr.push(searchResults);
+  
+  searchPlace.value = '';
+
+  renderMovies(searchResults);
+});
+
+renderMovies(movieInfo.slice(0, 50));
