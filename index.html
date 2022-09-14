@@ -16,6 +16,8 @@
 
         <form class="wrapper-form-js mx-auto text-center mt-4 mb-3">
           <input class="search-movie-js py-3 ps-3 rounded-4 border-0 shadow w-25" type="text" placeholder="Search your favourite film!">
+
+          <input class="ms-3 border-0 py-3 shadow rounded-4 ps-4 bg-white rating-js" type="number" placeholder='Set minimum rating!'>
           
           <button class="send-btn border-0 py-3 shadow rounded-4 px-5 bg-white ms-3" type="submit">Search!</button>
         </form>
@@ -25,8 +27,30 @@
     </section>
   </main>
 
+  <!-- Modal -->
+
+  <div class="modal fade js-modal-movie" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title js-modal-movie-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body js-modal-movie-summary">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Template -->
+
   <template id="template-movies-js">
-    <li class="movie-card-js card mb-3 py-2 card-item col-3">
+    <li class="js-result-item movie-card-js card mb-3 py-2 card-item col-3">
       <img class="movie-img-js card-img-top card-img mt-1" src="" alt="" width="250" height="200">
       <div class="card-body">
         <h5 class="movie-title-js card-title"></h5>
@@ -37,11 +61,15 @@
         <span class="movie-runtime-js d-block"></span>
         <span class="movie-language-js d-block"></span>
         <span><a class="movie-ytlink-js d-block"></a></span>
+        <button class="btn btn-primary js-movie-info-button mt-3" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          More info
+        </button>
       </div>
     </li>
   </template>
 
   <script src="./js/movies.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="./js/utilities.js"></script>
   <script src="./js/script.js"></script>
 </body>
